@@ -43,7 +43,25 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "sainnhe/everforest" -- Everforest is a green based color scheme
 
+  use {
+    "TimUntersberger/neogit",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("configs.neogit").setup()
+    end,
+  }
+
+
+  -- Startup dashboard
+  use {
+    "goolord/alpha-nvim",
+    config = function()
+      require("configs.alpha").setup()
+    end
+  }
+ 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

@@ -13,3 +13,4 @@ vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.numberwidth = 4
+vim.opt.termguicolors = true
