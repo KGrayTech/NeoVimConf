@@ -31,6 +31,11 @@ end
 
 -- Have packer use a popup window
 packer.init {
+  profile = {
+    enable = true,
+    threshold = 0,
+  },
+
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
@@ -42,11 +47,15 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+
+  use { "nvim-lua/plenary.nvim", module = "plenary" } -- Useful lua functions used by lots of plugins
+
   use "sainnhe/everforest" -- Everforest is a green based color scheme
 
+  -- A git plugin inspired by the Magit plugin for git in Emacs
   use {
     "TimUntersberger/neogit",
+    cmd = "Neogit",
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("configs.neogit").setup()
@@ -61,6 +70,63 @@ return packer.startup(function(use)
       require("configs.alpha").setup()
     end
   }
+
+
+  -- Plugin for show all keybindings
+  use {
+    "folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      require("configs.whichkey").setup()
+    end
+  }
+
+  -- Better icons
+  use {
+    "kyazdani42/nvim-web-devicons",
+    module = "nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup { default = true }
+    end
+  }
+
+  -- Better comment
+  use {
+    "numToStr/Comment.nvim",
+    opt = true,
+    keys = { "gc", "gcc", "gbc" },
+    config = function()
+      require("Comment").setup {}
+    end
+  }
+
+  -- Plugin for hopping between words (like EasyMotion)
+  use {
+    "phaazon/hop.nvim",
+    cmd = { "HopWord", "HopChar1" },
+    config = function()
+      require("hop").setup {}
+    end
+  }
+
+  use {
+    "ggandor/lightspeed.nvim",
+    keys = { "s", "S", "f", "F", "t", "T" },
+    config = function()
+      require("lightspeed").setup {}
+    end
+  }
+
+  -- For markdown files
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = "markdown",
+    cmd = {"MarkdownPreivew"}
+  }
+
  
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

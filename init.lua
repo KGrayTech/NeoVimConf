@@ -1,4 +1,4 @@
-require "options"
+require "defaults"
 require "keymaps"
 require "plugins"
 require "colorscheme"

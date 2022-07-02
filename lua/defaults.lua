@@ -1,0 +1,25 @@
+local api = vim.api
+local g = vim.g
+local opt = vim.opt
+
+opt.termguicolors = true
+opt.hlsearch = true
+opt.number = true
+opt.mouse = "a"
+opt.breakindent = true
+opt.undofile = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.smartindent = true
+opt.updatetime = 250
+opt.signcolumn = "yes"
+opt.clipboard = "unnamedplus"
+opt.backup = false
+opt.swapfile = false
+opt.expandtab = true
+opt.cmdheight = 2
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.cursorline = true
+opt.numberwidth = 4
+opt.timeoutlen = 300
