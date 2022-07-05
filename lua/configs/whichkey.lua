@@ -29,6 +29,11 @@ function M.setup()
     D = { "<Cmd>%bd|#e|bd#<Cr>", "Delete all buffers" },
   },
 
+  f = {
+    name = "Find",
+    e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  },
+
   z = {
     name = "Packer",
     c = {"<cmd>PackerCompile<cr>", "Compile" },

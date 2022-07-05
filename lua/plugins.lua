@@ -47,10 +47,9 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "sainnhe/everforest" -- Everforest is a green based color scheme
 
   use { "nvim-lua/plenary.nvim", module = "plenary" } -- Useful lua functions used by lots of plugins
-
-  use "sainnhe/everforest" -- Everforest is a green based color scheme
 
   -- A git plugin inspired by the Magit plugin for git in Emacs
   use {
@@ -125,6 +124,43 @@ return packer.startup(function(use)
     end,
     ft = "markdown",
     cmd = {"MarkdownPreivew"}
+  }
+
+  -- Status line plugin
+  use {
+    "nvim-lualine/lualine.nvim",
+    event = "VimEnter",
+    config = function()
+      require("configs.lualine").setup()
+    end,
+    requires = { "nvim-web-devicons" },
+  }
+
+  -- Treesitter plugin for good code highlight
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require("configs.treesitter").setup()
+    end,
+  }
+
+  -- Telescope plugin for fuzzy search
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
+
+  -- File explorer plugin
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    cmd = { "NvimTreeToggle", "NvimTreeClose" },
+    config = function()
+      require("configs.nvimtree").setup()
+    end,
   }
 
  

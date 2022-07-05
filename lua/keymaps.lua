@@ -41,9 +41,6 @@ keymap("", "<Space>", "<Nop>", default_opts);
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Leader shortcuts
-keymap("n", "<leader>e", ":Lex 30<cr>", default_opts)
-
 -- Switch buffer
 keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
 keymap("n", "<S-l>", ":bnext<CR>", default_opts)
